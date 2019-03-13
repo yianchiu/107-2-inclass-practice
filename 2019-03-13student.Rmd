@@ -8,6 +8,13 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+```{r}
 
-try commit
+a <- 2
+3 -> b
+
+#亦可使用"="
+
+65+b
 ```
+
