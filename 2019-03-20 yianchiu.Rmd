@@ -71,11 +71,16 @@ class(st2num)
 st2num
 ```
 ```{r}
+library(lubridate)
 dtobj <- ymd_hms('1970-01-01 00:02:53')
 dtobj
 dtobjv <- ymd_hms(c('1970-01-01 00:02:53','1997-01-22 00:04:45'))
 dtobjv
 class(dtobjv)
+```
+```{r}
+typeof(dtobj)
+as.numeric(dtobj)
 ```
 
 
