@@ -1,0 +1,24 @@
+---
+title: '0327'
+author: "yianchiu"
+date: "2019年3月27日"
+output: html_document
+---
+```{r}
+library(lubridate)
+dt<-ymd_hms("1970-01-01 00:02:53") 
+dt
+class(dt)
+```
+```{r}
+Sys.timezone()
+```
+change timezone
+```{r}
+twdt<-ymd_hms("2019-03-27 15:26:00", tz="Asia/Taipei")
+lsbdt<-with_tz(twdt,tzone = "Europe/Lisbon")
+lsbdt
+nydt<-with_tz(twdt,tzone = "America/New_York")
+nydt
+```
+
