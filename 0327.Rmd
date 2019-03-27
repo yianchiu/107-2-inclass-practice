@@ -27,4 +27,40 @@ typeof(nydt)
 as.double(twdt)
 as.double(nydt)
 ```
+```{r}
+mdy_hms('3/14/2019 8:18:47')->googletime
+googletime
+```
+##CH5
+```{r}
+a=c(1,2,3)
+b=c(1.23L,3.56L,7L)
+c=c(1L,2L,-3L)
+x=a+b
+y=a*b
+class(a)
+class(b)
+class(c)
+as.integer(b)
+```
+```{r}
+twdt
+twdt+1
+twdt+years(1)
+twdt+dyears(1)
+```
+
+```{r}
+x = 5
+y = 7
+x >= y
+x != y
+x == y
+```
+```{r}
+a=c(1,5,10)
+b=c(6,5,3)
+a==b
+a>=b
+```
 
