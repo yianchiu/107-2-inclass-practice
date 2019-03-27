@@ -22,3 +22,9 @@ nydt<-with_tz(twdt,tzone = "America/New_York")
 nydt
 ```
 
+```{r}
+typeof(nydt)
+as.double(twdt)
+as.double(nydt)
+```
+
