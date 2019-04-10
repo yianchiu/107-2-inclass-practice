@@ -1,0 +1,73 @@
+---
+title: '2019-04-10'
+author: "林茂廷"
+date: "4/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(stringr)
+course <- c("個體經濟學","投資學","總體經濟學")
+```
+
+subset
+```{r}
+?str_subset()
+course
+str_subset(course,"經濟學")
+str_detect(course,"經濟學")
+```
+```{r}
+studentID<-c(
+  '410177115','410176080','410174233','410177011','410182045','410176014')
+year<-str_sub(studentID,2,4)
+year
+major<-str_sub(studentID,5,6)
+major
+```
+
+join
+str_c(): 多個字串向量的合併(concatenate)
+```{r}
+month <- c("3","4","2")
+day <- c("11","5","7")
+char1 <- c("月","月","月")
+char2 <- c("日","日","日")
+month
+char1
+day 
+char2
+str_c(month,char1,day,char2)
+str_c(month,c("月"),day,c("日"))
+str_c(month,"月",day,"日")
+str_c(month,day, sep="-")#seperation
+str_c(month,day, sep="/")
+```
+
+split
+```{r}
+dates <- c("3-11", "4-5",  "2-7")
+str_split(dates,"-")
+```
+replace
+```{r}
+str_replace(dates,"-","月")
+dates2 <- c("3-11-2019", "4-5-2017",  "2-7-2015")
+dates2
+str_replace(dates2,"-","/")
+str_replace_all(dates2,"-","/")
+```
+practice
+```{r}
+library(readr)
+githubData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/githubData.csv")
+username <- githubData$`GitHub username`[11:16]
+reponame <- githubData$`GitHub repo name`[11:16]
+str_c("https://github.com",username,reponame,sep="/")
+```
+
+
