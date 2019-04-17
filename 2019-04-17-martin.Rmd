@@ -104,3 +104,31 @@ extract2[[1]]
 # 只取一個元素用[[]]!!!
 extract1[1][[1]]
 ```
+
+6.4.3
+```{r}
+plasticContainer$greenBox
+plasticContainer[["greenBox"]]
+```
+```{r}
+typeof(成績單)
+typeof(plasticContainer)
+```
+
+6.4.4
+```{r}
+your_github_username <- "anny12809200"
+your_practice_reponame <- "107-2-inclass-practice"
+library(httr)
+library(stringr)
+str_replace_all(
+  "https://api.github.com/repos/:owner/:repo/commits",
+  c(
+    ":owner"=your_github_username,
+    ":repo"=your_practice_reponame
+    )
+  ) -> commitCheckStatement
+commitCheck <- content(GET(commitCheckStatement))
+commitCheck
+```
+
