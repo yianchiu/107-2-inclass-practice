@@ -70,6 +70,37 @@ thdgrade<-studentRecord[[4]][[3]]
 name
 thdgrade
 ```
-```{r}
 
+```{r}
+list(
+  greenBox=c("paper","scissor"),
+  redBox=c(1,3,2.5)
+)
+extract1 <- plasticContainer[c("greenBox")]
+extract2 <- plasticContainer[[c("greenBox")]]
+extract1 #保有母層list的架構(留有greenbox的資訊)
+extract2 #無母層資訊(greenbox"內"的資訊)extract2即greenbox
+typeof(extract1)
+typeof(extract2)
+length(extract1)
+length(extract2)
+```
+# 用一個中括號取 會保有母層次的class結構
+```{r}
+length(plasticContainer)
+typeof(plasticContainer[[1]])
+typeof(plasticContainer[[c(1)]])
+typeof(plasticContainer[c(1)])
+typeof(plasticContainer[c(1,3)])
+typeof(plasticContainer[c(T,F,T)])
+```
+取出paper
+```{r}
+extract1[[1]][[1]]
+extract2[[1]]
+# 不能使用[]的原因!
+# []保有母層架構(仍為list)
+# 取不出paper
+# 只取一個元素用[[]]!!!
+extract1[1][[1]]
 ```
