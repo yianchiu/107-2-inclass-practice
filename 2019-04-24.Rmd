@@ -76,5 +76,30 @@ StuDF2 <- data.frame(
   )
 StuDF2 
 ```
+dataframe:table
+list
+```{r}
+LETTERS
+chosenLETTERS <- LETTERS[1:8]
+m <- matrix(chosenLETTERS,2,4)
+m
+tolower(m)
+```
+```{r}
+chosenLETTERS <- LETTERS[1:15]
+matObj1 <- matrix(chosenLETTERS,5,3)
+matObj1
+matObj1[c(1,4),c(2,3)]
+```
+```{r}
+library(readr)
+classSurvey <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/classSurvey.csv")
+```
+```{r}
+classSurvey[c(4,5)]
+lindex<-classSurvey$性別=="女"
+classSurvey[,c(lindex)]
+```
+
 
 
