@@ -1,0 +1,183 @@
+---
+title: '2019-05-15'
+author: "yianchiu"
+date: "2019年5月15日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+StuList <- list(
+  學號=c(172,214,322,425,517),
+  姓名=c("小明","大雄","胖虎","小新","大白"),
+  成績=c(80,60,90,70,50)
+  )
+StuList 
+```
+```{r}
+StuDF <- data.frame(
+  學號=c(172,214,322,425,517),
+  姓名=c("小明","大雄","胖虎","小新","大白"),
+  成績=c(80,60,90,70,50)
+  )
+StuDF 
+typeof(StuList)
+class(StuList)
+typeof(StuDF)
+class(StuDF)
+```
+```{r}
+class(StuDF$姓名)
+StuDF$姓名 <- as.character(StuDF$姓名)
+class(StuDF$姓名)
+```
+```{r}
+class(StuList)
+as.data.frame(StuList) -> StuDF3
+
+class(StuDF3)
+StuDF3
+
+as.data.frame(StuList,stringsAsFactors = F) -> StuDF4
+class(StuDF4)
+StuDF4
+```
+```{r}
+StuDF2 <- data.frame(
+  學號=c(172,214,322,425,517),
+  姓名=c("小明","大雄","胖虎","小新","大白"),
+  成績=c(80,60,90,70,50),
+  stringsAsFactors = FALSE
+  )
+StuDF2 
+```
+```{r}
+class(StuDF)
+typeof(StuDF)
+```
+
+### 05-15
+```{r}
+Vector1 <- letters[1:6]
+Vector1
+
+names(Vector1)
+```
+```{r}
+names(Vector1) <- c('名稱1','名稱2','名稱3','名稱4','名稱5','名稱6')
+names(Vector1)
+```
+```{r}
+LETTERS # R內設元素值為英文字母群的character vector
+chosenLETTERS <- LETTERS[1:15]
+matObj1 <- matrix(chosenLETTERS,5,3)
+matObj1 
+```
+```{r}
+colnames(matObj1) 
+rownames(matObj1)
+
+colnames(matObj1) <-c('欄位1','欄位2','欄位3')
+colnames(matObj1)
+matObj1
+
+rownames(matObj1) <- c('行：1','行：2','行：3','行：4','行：5')
+matObj1
+```
+```{r}
+library(stringr)
+StuDF2
+rownames(StuDF2)
+rownames(StuDF2)<-str_c("第",c(1:5),"筆")
+StuDF2
+```
+```{r}
+b <- list(
+  元素1=1,
+  元素2="Hello",
+  元素3=TRUE
+)
+b[[3]]=FALSE
+b[[5]]=7
+```
+```{r}
+names(b)
+b[["新元素A"]] <- c(1,2,3)
+b$新元素B <- c(T,F,T)
+b
+```
+```{r}
+library(readr)
+exData3 <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/exData3.csv",
+                    col_types = cols(
+                      匯率 = col_number(),
+                      期間 = col_character()))
+
+#取出「期間」變數轉成date class。
+library(lubridate)
+exData3$期間<-ymd(exData3$期間)
+class(exData3$期間)
+head(exData3)
+#增加一個「isAsiaCrisis」的logical變數，其值為TRUE若「期間」介於1997-06-01到1998-12-01（含前後）。
+isAsiaCrisis<-ymd("1997-06-01")<=exData3$期間 & exData3$期間<=ymd("1998-12-01")
+exData3$isAsiaCris<-isAsiaCrisis
+head(exData3)
+
+#利用「isAsiaCrisis」值，結合使用[.R,.C]取出1997-06-01到1998-12-01亞洲金融危機的子樣本。
+exData3[isAsiaCrisis,]
+
+```
+```{r}
+library(readr)
+transcriptDataFinal <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/transcriptDataFinal.csv")
+names(transcriptDataFinal)
+```
+```{r}
+log<-transcriptDataFinal$學號=="92aS67fee"
+transcriptDataFinal[log,]
+```
+```{r}
+f <- function(x,.alpha){
+  add <- x+.alpha
+  return(add) 
+}
+```
+```{r}
+supply_fun<- function(a,b,P){
+  Qs<-a+b*P
+  return(Qs) 
+}
+demand_fun<- function(c,d,P){
+  Qd<-c-d*P
+  return(Qd) 
+}
+a=0
+b=10
+c=5
+d=1
+P=1
+if(supply_fun(a,b,P)<demand_fun(c,d,P)){"超額需求"}
+else if (supply_fun(a,b,P)<demand_fun(c,d,P)){"超額供給"}
+else{"持平"}
+```
+```{r}
+gpa_fun <- function(studentID){
+  transcriptDataFinal$學號==studentID -> logiChosenStudent
+
+  subSample <- transcriptDataFinal[logiChosenStudent,]
+
+  sum(subSample$學期成績*subSample$學分數)/
+    sum(subSample$學分數) -> GPA
+  return(GPA)
+}
+```
+
+
+
+
+
+
+
