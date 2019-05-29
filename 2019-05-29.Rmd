@@ -9,22 +9,52 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+textbookURL<-function(){
+browseURL("https://bookdown.org/tpemartin/ntpu-programming-for-data-science/function-and-conditional-execution.html#section")
+  textbookURL()
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+demand_supply_fun<-function(P,a,b,c,d){
+  Qs<-a+b*P
+  Qd<-c-d*P
+  return(
+    list(Qs=Qs,Qd=Qd,超額供給量=Qs-Qd)
+  )
+}
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+gpa_fun <- function(studentID){
+  transcriptDataFinal$學號==studentID -> logiChosenStudent
+  subSample <- transcriptDataFinal[logiChosenStudent,]
+  sum(subSample$學期成績*subSample$學分數)/
+    sum(subSample$學分數) -> GPA
+  
+if (!studentID %in% transcriptDataFinal$學號){
+  message("查無此學號")
+}
+else{message(cat("顯示",GPA))}
+}
+```
+Implement a fizzbuzz function. It takes a single number as input. If the number is divisible by three, it returns “fizz”. If it’s divisible by five it returns “buzz”. If it’s divisible by three and five, it returns “fizzbuzz”. Otherwise, it returns the number. Make sure you first write working code before you create the function. –From, R for Data Science.
+```{r}
+fizzbuzz<-function(x){
+  if(x%%3==0&x%%5!=0){
+    print("fizz")
+  }
+  else if(x%%5==0&x%%3!=0){
+    print("buzz")
+  }
+  else if(x%%5==0&x%%3==0){
+    print("fizzbuzz")
+  }
+  else{
+    print(x)
+  }
+}
+```
+
+
